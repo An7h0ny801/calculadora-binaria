@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Binaria</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="backgroundMusic" loop>
+  <source src="hollow_knight.mp3" type="audio/mpeg">
+</audio>
+
+<div id="musicControls">
+  <button id="playButton">▶️</button>
+  <button id="muteButton">🔊</button>
+</div>
+<div class="snow-container"></div>
+
+  <div class="glass-card">
+    <h1>⚙️ Calculadora Binaria</h1>
+
+    <div class="converter">
+      <div class="input-group column">
+        <div class="input-block">
+          <label for="bin1">Binario 1:</label>
+          <input type="text" id="bin1" class="input" placeholder="Ej: 1011">
+        </div>
+        <div class="input-block">
+          <label for="bin2">Binario 2:</label>
+          <input type="text" id="bin2" class="input" placeholder="Ej: 110">
+        </div>
+      </div>
+
+      <div class="input-block">
+        <label for="operation">Operación:</label>
+        <select id="operation" class="input">
+          <option value="add">➕ Suma</option>
+          <option value="sub">➖ Resta</option>
+          <option value="mul">✖️ Multiplicación</option>
+          <option value="div">➗ División</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button onclick="calculate()"><span>Calcular</span></button>
+        <button onclick="refreshAll()"><span>Limpiar</span></button>
+      </div>
+
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+
+  <div class="glass-card small">
+    <img src="logo.png" alt="logo" style="height:40px; width:auto;">
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Control de música
+    const music = document.getElementById("backgroundMusic");
+    const muteButton = document.getElementById("muteButton");
+
+    // Intentar reproducir automáticamente
+    window.addEventListener("load", () => {
+      music.play().catch(() => {
+        console.log("El navegador bloqueó la reproducción automática.");
+      });
+    });
+
+    // Botón para mutear/desmutear
+    muteButton.addEventListener("click", () => {
+      music.muted = !music.muted;
+      muteButton.textContent = music.muted ? "🔇 Unmute" : "🔊 Mute";
+    });
+  </script>
+</body>
+</html>
